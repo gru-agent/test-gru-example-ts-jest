@@ -1,0 +1,23 @@
+version: "0.1"
+global:
+  setup:
+    - npm install
+pipeline:
+  runTest:
+    # If your project uses ESLint and Prettier, you can configure the pre-stage here.
+    # pre:
+    #    - npx eslint --fix {{sourceFilePath}} 
+    #    - npx prettier {{sourceFilePath}} --write
+    exec:
+       - npx vitest run {{testFilePath}}
+    # If your project has certain requirements for the final submitted code, you can configure the post-stage here.
+    # post:
+    #   - npm run lint
+    #   - npx tsc --noEmit
+settings:
+  # IF you allow TestGru to add export to your source code classes or functions when it needs to test your source code
+  exportFunctionOrClass: allow
+  # Location of the test files
+  testPlacementStrategies:
+    - type: co-located
+      testFilePattern: "{{sourceFileName}}.spec.ts"
