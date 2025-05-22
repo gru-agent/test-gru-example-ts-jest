@@ -5,6 +5,8 @@ interface User {
   email: string;
 }
 
+console.log("hello")
+
 // Define the UserManager class
 class UserManager {
   private users: User[] = [];
